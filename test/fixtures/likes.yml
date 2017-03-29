@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ststus: false
+  likable_id: 1
+  user: one
+
+two:
+  ststus: false
+  likable_id: 1
+  user: two
