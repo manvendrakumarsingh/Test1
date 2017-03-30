@@ -1,8 +1,8 @@
 class LikesController < ApplicationController
 	def index
-		@user = User.find_by(:id => params[:user_id])
-		@likes=@user.likes.all 
-			render json: {:post => @likes, response: 200, responsemsg: "success"}
+		 @user = User.find_by(:id => params[:user_id])
+		 @likes = @user.likes.all 
+			render json: {:like => @likes, response: 200, responsemsg: "success"}
 	end
 
 	def create
@@ -11,18 +11,18 @@ class LikesController < ApplicationController
 			return render json: {response: 500,msg: "user not found"}
 		end
         
-		like_params = user.posts.build(like_params) 
+		 user_like = user.like.build(like_params) 
 
 		if like_params.save
-			render json: {response: 500,msg: "Event Created", like: like_params}
+			render json: {response: 500,msg: "like Created", like: like_params}
 		else
-			render json: {response: 500,msg: "Event Not Created"}
+			render json: {response: 500,msg: "like Not Created"}
 		end
 	end
 		private 
 
         def like_params
-			params.require(:like).permit(:status,:likable_id)
+			params.require(:like).permit(:status,:likable_type,:likable_id)
 
 end
 end
